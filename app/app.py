@@ -119,6 +119,8 @@ def has_no_empty_params(rule):
     return len(default) >= len(arguments)
 
 @app.route('/', methods = ['GET'])
+@app.route("/tainted7/<something>")
+os.system(request.remote_addr) 
 def sitemap():
     links = []
     for rule in app.url_map.iter_rules():
